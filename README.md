@@ -3,7 +3,7 @@
 `vim-uncommenter` is a simple a plugin to delete all comments in a programming source file, just by pressing `dc` in vim.
 
 #### Step 1.
-In most programming language files opened in vim, to delete all of the lines that are comments, simply hit the keys ``dc`` and the comments will all disapear!
+In most programming language files opened in vim, to delete all of the lines that are comments, simply hit the keys ``dc`` and the comments will all disappear!
 
 ===========================================================================
 

@@ -11,7 +11,8 @@ function! DeleteInlineComments(comment_symbol)
 		:g/^\s\{-\}"\(.*\)/d
 	else
 		:execute 'g/^\s\{-\}'.a:comment_symbol.'\(.*\)/d'
-		:execute 'g!/\(.\{-\}\)'."[\"\|']".'\(.*\)'.a:comment_symbol.'\(.*\)'."[\"\|']".'\(.*\)/s/\(.\{-\}\)'.a:comment_symbol.'\(.*\)/\1/ge'
+		:execute 'g!/.\{-\}'."[\"\|']".'\(.*\)'.a:comment_symbol.'\(.*\)'."[\"\|']".'\(.*\)/s/\(.\{-\}\)'.a:comment_symbol.'\(.*\)/\1/ge'
+		:execute 'g!/\('."[\"\|']".'.\{-\}\)\@<!'.a:comment_symbol.'\('."[\"\|']".'\)\@!\('.a:comment_symbol.'\)\@!.*/s/'.a:comment_symbol.'\(.*'."[\"\|']".'\)\@!\('.a:comment_symbol.'\)\@!.*//ge'
 	endif
 
 	" remove any comment following the last quotation mark on a line
