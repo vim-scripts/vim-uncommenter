@@ -4,9 +4,44 @@ In most programming language files opened in vim, to delete all of the lines tha
 
 Currently only works for inline comments.
 TODO: Add functionality for block comments.
+------------------------------------------
+
+Before:
+------------------------------------------
+# here is a comment
+def Hello (name) # here is wierdly placed comment
+    puts "\n-------------"
+    puts "Hello, #{name}." # even a comment here will be removed
+    puts '--------------'
+end
+
+puts '######' # this one too, however the `#` inside the single quotes will be fine!
+
+# and here is another comment
+[1, 2, 3, 4, 5].each do |i| 
+    puts "hello" # and another wierd one
+end
+
+# and here is the last comment
+Hello("# Benjamin #") # this one too
+
+After:
+------------------------------------------
+def Hello (name)
+    puts "\n-------------"
+    puts "Hello, #{name}."
+    puts '--------------'
+end
+
+puts '######'
+
+[1, 2, 3, 4, 5].each do |i| 
+    puts "hello"
+end
+
+Hello("# Benjamin #")
 
 Current programming languages that vim-uncommenter works with:
-
 ------------------------------------------
 + Ruby
 + PHP
@@ -47,39 +82,3 @@ Current programming languages that vim-uncommenter works with:
 + Eiffel
 + Lua
 + VHDL
-------------------------------------------
-
-Before:
-------------------------------------------
-# here is a comment
-def Hello (name) # here is wierdly placed comment
-    puts "\n-------------"
-    puts "Hello, #{name}." # even a comment here will be removed
-    puts '--------------'
-end
-
-puts '######' # this one too, however the `#` inside the single quotes will be fine!
-
-# and here is another comment
-[1, 2, 3, 4, 5].each do |i| 
-    puts "hello" # and another wierd one
-end
-
-# and here is the last comment
-Hello("Benjamin")
-
-After:
-------------------------------------------
-def Hello (name)
-    puts "\n-------------"
-    puts "Hello, #{name}."
-    puts '--------------'
-end
-
-puts '######'
-
-[1, 2, 3, 4, 5].each do |i| 
-    puts "hello"
-end
-
-Hello("Benjamin")

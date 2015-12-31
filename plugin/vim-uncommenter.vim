@@ -1,3 +1,5 @@
+" MAKE SURE `#!` IS NOT COUNTED AS A COMMENT
+
 function! DeleteBlockComments(comment_start, comment_end)
 	" TODO
 endfunction
@@ -10,7 +12,11 @@ function! DeleteInlineComments(comment_symbol)
 	if &ft == 'vim'
 		:g/^\s\{-\}"\(.*\)/d
 	else
-		:execute 'g/^\s\{-\}'.a:comment_symbol.'\(.*\)/d'
+		if a:comment_symbol == "#"
+			:execute 'g!/^\s\{-\}#!/s/^\s\{-\}#\(.*\)//ge'
+		else
+			:execute 'g/^\s\{-\}'.a:comment_symbol.'\(.*\)/d'
+		endif
 		:execute 'g!/.\{-\}'."[\"\|']".'\(.*\)'.a:comment_symbol.'\(.*\)'."[\"\|']".'\(.*\)/s/\(.\{-\}\)'.a:comment_symbol.'\(.*\)/\1/ge'
 		:execute 'g!/\('."[\"\|']".'.\{-\}\)\@<!'.a:comment_symbol.'\('."[\"\|']".'\)\@!\('.a:comment_symbol.'\)\@!.*/s/'.a:comment_symbol.'\(.*'."[\"\|']".'\)\@!\('.a:comment_symbol.'\)\@!.*//ge'
 	endif
@@ -24,7 +30,7 @@ function! DeleteInlineComments(comment_symbol)
 endfunction
 
 autocmd FileType ruby,php,python,r,perl,sh,make nnoremap <buffer> dc :silent! call DeleteInlineComments("#")<CR>
-autocmd BufEnter *.ps1,*.cobra,*.sd7,*.s7i nnoremap <buffer> dc :silent! call DeleteInlineComments("#")<CR>
+autocmd BufEnter *.ps1,*.cobra,*.sd7,*.s7i,*.coffee nnoremap <buffer> dc :silent! call DeleteInlineComments("#")<CR>
 
 autocmd FileType erlang nnoremap <buffer> dc :silent! call DeleteInlineComments("%")<CR>
 autocmd BufEnter *.tex nnoremap <buffer> dc :silent! call DeleteInlineComments("%")<CR>
