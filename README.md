@@ -6,8 +6,7 @@ In most programming language files opened in vim, to delete all of the lines tha
 
 ===========================================================================
 
-### STARTED ADDING BLOCK COMMENT FUNCTIONALITY
-##### TODO: Add Block Comment Functionality For More Programming Languages.
+### UPDATE: NOW WORKING FOR DELETING BLOCK COMMENTS WITH MOST OF THE PROGRAMMING LANGUAGES ON THE LIST BELOW
 
 ===========================================================================
 

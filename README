@@ -2,8 +2,7 @@ This is a mirror of http://www.vim.org/scripts/script.php?script_id=5291
 
 In most programming language files opened in vim, to delete all of the lines that are comments, simply hit the keys `dc` and the comments will all disappear!
 
-Currently only works for inline comments.
-TODO: Add functionality for block comments.
+UPDATE: NOW WORKING FOR DELETING BLOCK COMMENTS WITH MOST OF THE PROGRAMMING LANGUAGES ON THE LIST BELOW
 ------------------------------------------
 
 Before:
